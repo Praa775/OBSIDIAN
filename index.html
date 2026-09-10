@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Welcome To Obsidian</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;600;700;800&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+:root{
+    --pink:#ff2d91;
+    --pink2:#ff63b4;
+    --dark:#070308;
+}
+
+body{
+    width:100%;
+    height:100vh;
+    overflow:hidden;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-family:'Poppins',sans-serif;
+    color:white;
+    background:
+        radial-gradient(circle at 50% 45%,rgba(255,45,145,.16),transparent 30%),
+        radial-gradient(circle at 15% 20%,rgba(255,45,145,.10),transparent 25%),
+        radial-gradient(circle at 90% 85%,rgba(255,45,145,.10),transparent 25%),
+        var(--dark);
+}
+
+/* GRID */
+
+.grid{
+    position:fixed;
+    inset:0;
+    background-image:
+        linear-gradient(rgba(255,45,145,.055) 1px,transparent 1px),
+        linear-gradient(90deg,rgba(255,45,145,.055) 1px,transparent 1px);
+    background-size:50px 50px;
+    mask-image:radial-gradient(circle,black 20%,transparent 75%);
+    pointer-events:none;
+}
+
+/* GLOW */
+
+.glow{
+    position:fixed;
+    width:300px;
+    height:300px;
+    border-radius:50%;
+    background:var(--pink);
+    filter:blur(120px);
+    opacity:.14;
+    pointer-events:none;
+}
+
+.glow.one{
+    top:-150px;
+    left:-100px;
+}
+
+.glow.two{
+    right:-130px;
+    bottom:-150px;
+}
+
+/* CONTENT */
+
+.container{
+    position:relative;
+    z-index:5;
+    width:100%;
+    max-width:650px;
+    padding:30px;
+    text-align:center;
+}
+
+/* SMALL LABEL */
+
+.label{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    padding:8px 15px;
+    margin-bottom:25px;
+
+    border:1px solid rgba(255,45,145,.22);
+    border-radius:50px;
+
+    background:rgba(255,45,145,.055);
+    color:#ff8cc5;
+
+    font-size:9px;
+    font-weight:600;
+    letter-spacing:2px;
+
+    animation:fadeDown 1s ease;
+}
+
+.label i{
+    font-size:8px;
+    filter:drop-shadow(0 0 7px var(--pink));
+}
+
+/* TITLE */
+
+h1{
+    font-family:'Orbitron',sans-serif;
+    font-size:clamp(38px,9vw,76px);
+    line-height:1.05;
+    font-weight:800;
+    letter-spacing:3px;
+
+    background:linear-gradient(
+        90deg,
+        #fff 0%,
+        #ffafd5 40%,
+        #ff3296 70%,
+        #fff 100%
+    );
+
+    background-size:200% auto;
+
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+
+    filter:
+        drop-shadow(0 0 15px rgba(255,45,145,.25));
+
+    animation:
+        fadeUp 1s ease,
+        shine 5s linear infinite;
+}
+
+@keyframes shine{
+    to{
+        background-position:200% center;
+    }
+}
+
+/* SUBTITLE */
+
+.subtitle{
+    margin:20px auto 34px;
+    max-width:450px;
+
+    color:#9f9299;
+    font-size:13px;
+    line-height:1.8;
+
+    animation:fadeUp 1.2s ease;
+}
+
+/* BUTTON */
+
+.enter{
+    position:relative;
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    gap:12px;
+
+    min-width:210px;
+    height:58px;
+
+    padding:0 28px;
+
+    color:white;
+    text-decoration:none;
+
+    font-size:12px;
+    font-weight:700;
+    letter-spacing:1.5px;
+
+    border-radius:16px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #ff197f,
+            #ff4da5,
+            #e91b78
+        );
+
+    box-shadow:
+        0 12px 35px rgba(255,45,145,.25),
+        0 0 0 1px rgba(255,130,190,.15) inset;
+
+    overflow:hidden;
+
+    transition:.3s ease;
+
+    animation:
+        fadeUp 1.4s ease,
+        buttonPulse 3s ease-in-out infinite;
+}
+
+.enter::before{
+    content:"";
+    position:absolute;
+    top:0;
+    left:-120%;
+    width:70%;
+    height:100%;
+
+    background:linear-gradient(
+        90deg,
+        transparent,
+        rgba(255,255,255,.4),
+        transparent
+    );
+
+    transform:skewX(-20deg);
+    transition:.7s;
+}
+
+.enter:hover::before{
+    left:140%;
+}
+
+.enter:hover{
+    transform:translateY(-4px) scale(1.02);
+
+    box-shadow:
+        0 18px 50px rgba(255,45,145,.4),
+        0 0 30px rgba(255,45,145,.18);
+}
+
+.enter:active{
+    transform:scale(.96);
+}
+
+.enter i{
+    font-size:12px;
+}
+
+/* LINE */
+
+.line{
+    width:100px;
+    height:1px;
+    margin:28px auto 0;
+
+    background:linear-gradient(
+        90deg,
+        transparent,
+        var(--pink),
+        transparent
+    );
+
+    box-shadow:0 0 10px var(--pink);
+
+    animation:fadeUp 1.6s ease;
+}
+
+/* FOOTER */
+
+.footer{
+    position:fixed;
+    bottom:22px;
+    left:0;
+    width:100%;
+
+    text-align:center;
+
+    color:#4f444a;
+    font-size:9px;
+    letter-spacing:1px;
+}
+
+.footer span{
+    color:#ff438f;
+}
+
+/* PARTICLES */
+
+.particle{
+    position:fixed;
+    width:3px;
+    height:3px;
+    border-radius:50%;
+
+    background:#ff4da4;
+    box-shadow:0 0 12px #ff2d91;
+
+    opacity:.4;
+
+    animation:particle 8s linear infinite;
+}
+
+.p1{left:10%;top:80%}
+.p2{left:25%;top:25%;animation-delay:2s}
+.p3{left:45%;top:85%;animation-delay:4s}
+.p4{left:70%;top:18%;animation-delay:1s}
+.p5{left:88%;top:70%;animation-delay:3s}
+.p6{left:60%;top:55%;animation-delay:5s}
+
+@keyframes particle{
+    0%{
+        transform:translateY(30px);
+        opacity:0;
+    }
+    30%{
+        opacity:.5;
+    }
+    100%{
+        transform:translateY(-130px);
+        opacity:0;
+    }
+}
+
+/* ANIMATIONS */
+
+@keyframes fadeUp{
+    from{
+        opacity:0;
+        transform:translateY(25px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+@keyframes fadeDown{
+    from{
+        opacity:0;
+        transform:translateY(-15px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+@keyframes buttonPulse{
+    0%,100%{
+        box-shadow:
+            0 12px 35px rgba(255,45,145,.25),
+            0 0 0 1px rgba(255,130,190,.15) inset;
+    }
+    50%{
+        box-shadow:
+            0 12px 45px rgba(255,45,145,.38),
+            0 0 25px rgba(255,45,145,.12);
+    }
+}
+
+/* MOBILE */
+
+@media(max-width:500px){
+
+    .container{
+        padding:20px;
+    }
+
+    h1{
+        font-size:40px;
+        letter-spacing:2px;
+    }
+
+    .subtitle{
+        font-size:12px;
+        margin-top:17px;
+        margin-bottom:30px;
+    }
+
+    .enter{
+        width:200px;
+        height:55px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="grid"></div>
+
+<div class="glow one"></div>
+<div class="glow two"></div>
+
+<div class="particle p1"></div>
+<div class="particle p2"></div>
+<div class="particle p3"></div>
+<div class="particle p4"></div>
+<div class="particle p5"></div>
+<div class="particle p6"></div>
+
+<div class="container">
+
+    <div class="label">
+        <i class="fa-solid fa-circle"></i>
+        PRIVATE ACCESS
+    </div>
+
+    <h1>WELCOME TO<br>OBSIDIAN</h1>
+
+    <p class="subtitle">
+        Enter the dark side.<br>
+        Your destination is waiting beyond this gate.
+    </p>
+
+    <a
+        class="enter"
+        href="http://panelinstltess.sanzcloud.biz.id:2177"
+    >
+        <i class="fa-solid fa-arrow-right"></i>
+        KLIK UNTUK MASUK
+    </a>
+
+    <div class="line"></div>
+
+</div>
+
+<div class="footer">
+    <span>OBSIDIAN</span> • PRIVATE ACCESS • 2026
+</div>
+
+</body>
+</html>
